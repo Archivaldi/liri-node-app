@@ -41,6 +41,10 @@ function liri() {
                 console.log("Album: " + data.tracks.items[0].album.name);
                 console.log("=======================");
             });
+            fs.appendFile('./log.txt', command + ", ", 'utf8', function (err){
+                console.log(err);
+            });
+
 
             //if user didn't put a track, liri will give default information
         } else {
@@ -55,6 +59,10 @@ function liri() {
                     console.log("Album: " + data.tracks.items[2].album.name);
                     console.log("=======================");
             });
+            fs.appendFile('./log.txt', command + ", ", 'utf8', function (err){
+                // console.log(err);
+            });
+
         }
 
         //command concert-this will give information about venues of artist that we entered
@@ -72,6 +80,11 @@ function liri() {
                         console.log("Date: " + moment(response.data[i].datetime).format("MM/DD/YYYY"));
                         console.log("=======================");
                     }
+                    fs.appendFile('./log.txt', command + ", ", 'utf8', function (err){
+                        // console.log(err);
+                    });
+        
+
                 }
             }).catch((err) => {
                 if (err) {
@@ -98,6 +111,11 @@ function liri() {
                 console.log("Actors: " + response.data.Actors);
                 console.log("=======================");
             })
+            fs.appendFile('./log.txt', command + ", ", 'utf8', function (err){
+                // console.log(err);
+            });
+
+
 
             //if user didn't put any movie, by default liri will give information about "Mr.Nobody" movie
         } else {
@@ -113,6 +131,11 @@ function liri() {
                 console.log("Actors: " + response.data.Actors);
                 console.log("=======================");
             })
+            fs.appendFile('./log.txt', command + ", ", 'utf8', function (err){
+                // console.log(err);
+            });
+
+
         }
 
         //command do-what-it-says will give user default command and item

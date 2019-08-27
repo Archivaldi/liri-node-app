@@ -1,16 +1,18 @@
 require("dotenv").config();
-var keys = require("./keys.js");
+const keys = require("./keys.js");
 
-var Spotify = require('node-spotify-api');
-var spotify = new Spotify(keys.spotify);
+const Spotify = require('node-spotify-api');
+const spotify = new Spotify(keys.spotify);
+
+const fs = require("fs");
 
 const axios = require("axios");
 const moment = require("moment");
 
 
 
-var command = process.argv[2];
-var item = process.argv[3];
+let command = process.argv[2];
+let item = process.argv[3];
 
 if (command === "spotify-this-song") {
     spotify.search({ type: 'track', query: item, limit: 1 }, function (err, data) {
@@ -25,6 +27,24 @@ if (command === "spotify-this-song") {
     });
 
 } else if (command === "concert-this") {
+
+    axios.get("https://rest.bandsintown.com/artists/" + item + "/events?app_id=codingbootcamp").then((response) => {
+        if (response.data.length == 0) {
+            console.log("Sorry, this artist doesn't have upcoming events");
+        } else {
+            for (var i = 0; i < response.data.length; i++){
+                console.log("=======================");
+                console.log("Venue: " + response.data[i].venue.name);
+                console.log("Location: " + response.data[i].venue.city + ", " + response.data[i].venue.region);
+                console.log("Date: " + moment(response.data[i].datetime).format("MM/DD/YYYY"));
+                console.log("=======================");
+            }
+        }
+    }).catch((err) => {
+        if (err) {
+            console.log(err.message);
+        }
+    })
 
 } else if (command === "movie-this") {
     if (item) {
@@ -51,6 +71,9 @@ if (command === "spotify-this-song") {
         })
     }
 } else if (command === "do-what-it-says") {
+
+    var contents = fs.readFileSync('./random.txt', 'utf8');
+    console.log(contents);
 
 } else {
     console.log("Sorry, the command is not recognized. Please try following commands: 'concert-this', 'spotify-this-song', 'movie-this', 'do-what-it-says'")

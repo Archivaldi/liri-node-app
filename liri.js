@@ -30,16 +30,16 @@ function liri() {
             });
 
         } else {
-            spotify.search({ type: 'track', query: "The Sign", limit: 1 }, function (err, data) {
+            spotify.search({ type: 'track', query: "The Sign", limit: 3}, function (err, data) {
                 if (err) {
                     return console.log('Error occurred: ' + err);
                 }
-                console.log("=======================");
-                console.log("Artist: " + data.tracks.items[0].artists[0].name);
-                console.log("Song name: " + data.tracks.items[0].name);
-                console.log("Preview on Spotify: " + data.tracks.items[0].uri);
-                console.log("Album: " + data.tracks.items[0].album.name);
-                console.log("=======================");
+                    console.log("=======================");
+                    console.log("Artist: " + data.tracks.items[2].artists[0].name);
+                    console.log("Song name: " + data.tracks.items[2].name);
+                    console.log("Preview on Spotify: " + data.tracks.items[0].uri);
+                    console.log("Album: " + data.tracks.items[2].album.name);
+                    console.log("=======================");
             });
         }
     } else if (command === "concert-this") {

@@ -57,17 +57,18 @@ function liri() {
                 if (err) {
                     return console.log('Error occurred: ' + err);
                 }
+                console.log(data.tracks.items);
                 console.log("=======================");
-                console.log("Artist: " + data.tracks.items[2].artists[0].name);
-                console.log("Song name: " + data.tracks.items[2].name);
+                console.log("Artist: " + data.tracks.items[3].artists[0].name);
+                console.log("Song name: " + data.tracks.items[3].name);
                 console.log("Preview on Spotify: " + data.tracks.items[0].uri);
-                console.log("Album: " + data.tracks.items[2].album.name);
+                console.log("Album: " + data.tracks.items[3].album.name);
                 console.log("=======================");
 
-                if (!content.includes(data.tracks.items[0].name)) {
+                if (!content.includes(data.tracks.items[3].name)) {
                     fs.appendFile('./log.txt', "\n" + "\n" + command + "\n" + "=======================" + "\n" + "Artist: " +
-                        data.tracks.items[2].artists[0].name + "\n" + "Song name: " + data.tracks.items[2].name +
-                        "\n" + "Preview on Spotify: " + data.tracks.items[2].uri + "\n" + "Album: " + data.tracks.items[2].album.name +
+                        data.tracks.items[3].artists[0].name + "\n" + "Song name: " + data.tracks.items[3].name +
+                        "\n" + "Preview on Spotify: " + data.tracks.items[3].uri + "\n" + "Album: " + data.tracks.items[3].album.name +
                         "\n" + "=======================", "utf8", function (err) { })
                 }
             });
@@ -83,8 +84,8 @@ function liri() {
                 if (response.data.length == 0) {
                     console.log("Sorry, this artist doesn't have upcoming events");
                 } else {
-                    
-                    fs.appendFile('./log.txt', "\n" + "\n" + command + ", " + item, "utf8", function (err){});
+
+                    fs.appendFile('./log.txt', "\n" + "\n" + command + ", " + item, "utf8", function (err) { });
 
                     for (var i = 0; i < response.data.length; i++) {
                         console.log("=======================");
@@ -134,16 +135,16 @@ function liri() {
                 if (!content.includes(response.data.Title)) {
                     if (response.data.Ratings.length >= 2) {
                         fs.appendFile('./log.txt', "\n" + "\n" + command + "\n" + "=======================" + "\n" + "Title: " + response.data.Title +
-                    "\n" + "Year: " + response.data.Year + "\n" + "IMDB Rating: " + response.data.imdbRating + "\n" + "Rotten Tomatoes: " + response.data.Ratings[1].Value +
-                    "\n" + "Country: " + response.data.Country + "\n" + "Language: " + response.data.Language +
-                    "\n" + "Plot: " + response.data.Plot + "\n" + "Actors: " + response.data.Actors +
-                    "\n" + "=======================", "utf8", function (err) { })
+                            "\n" + "Year: " + response.data.Year + "\n" + "IMDB Rating: " + response.data.imdbRating + "\n" + "Rotten Tomatoes: " + response.data.Ratings[1].Value +
+                            "\n" + "Country: " + response.data.Country + "\n" + "Language: " + response.data.Language +
+                            "\n" + "Plot: " + response.data.Plot + "\n" + "Actors: " + response.data.Actors +
+                            "\n" + "=======================", "utf8", function (err) { })
                     } else {
                         fs.appendFile('./log.txt', "\n" + "\n" + command + "\n" + "=======================" + "\n" + "Title: " + response.data.Title +
-                        "\n" + "Year: " + response.data.Year + "\n" + "IMDB Rating: " + response.data.imdbRating +
-                        "\n" + "Country: " + response.data.Country + "\n" + "Language: " + response.data.Language +
-                        "\n" + "Plot: " + response.data.Plot + "\n" + "Actors: " + response.data.Actors +
-                        "\n" + "=======================", "utf8", function (err) { })
+                            "\n" + "Year: " + response.data.Year + "\n" + "IMDB Rating: " + response.data.imdbRating +
+                            "\n" + "Country: " + response.data.Country + "\n" + "Language: " + response.data.Language +
+                            "\n" + "Plot: " + response.data.Plot + "\n" + "Actors: " + response.data.Actors +
+                            "\n" + "=======================", "utf8", function (err) { })
                     }
                 }
             })
@@ -169,16 +170,16 @@ function liri() {
                 if (!content.includes(response.data.Title)) {
                     if (response.data.Ratings.length >= 2) {
                         fs.appendFile('./log.txt', "\n" + "\n" + command + "\n" + "=======================" + "\n" + "Title: " + response.data.Title +
-                    "\n" + "Year: " + response.data.Year + "\n" + "IMDB Rating: " + response.data.imdbRating + "\n" + "Rotten Tomatoes: " + response.data.Ratings[1].Value +
-                    "\n" + "Country: " + response.data.Country + "\n" + "Language: " + response.data.Language +
-                    "\n" + "Plot: " + response.data.Plot + "\n" + "Actors: " + response.data.Actors +
-                    "\n" + "=======================", "utf8", function (err) { })
+                            "\n" + "Year: " + response.data.Year + "\n" + "IMDB Rating: " + response.data.imdbRating + "\n" + "Rotten Tomatoes: " + response.data.Ratings[1].Value +
+                            "\n" + "Country: " + response.data.Country + "\n" + "Language: " + response.data.Language +
+                            "\n" + "Plot: " + response.data.Plot + "\n" + "Actors: " + response.data.Actors +
+                            "\n" + "=======================", "utf8", function (err) { })
                     } else {
                         fs.appendFile('./log.txt', "\n" + "\n" + command + "\n" + "=======================" + "\n" + "Title: " + response.data.Title +
-                        "\n" + "Year: " + response.data.Year + "\n" + "IMDB Rating: " + response.data.imdbRating +
-                        "\n" + "Country: " + response.data.Country + "\n" + "Language: " + response.data.Language +
-                        "\n" + "Plot: " + response.data.Plot + "\n" + "Actors: " + response.data.Actors +
-                        "\n" + "=======================", "utf8", function (err) { })
+                            "\n" + "Year: " + response.data.Year + "\n" + "IMDB Rating: " + response.data.imdbRating +
+                            "\n" + "Country: " + response.data.Country + "\n" + "Language: " + response.data.Language +
+                            "\n" + "Plot: " + response.data.Plot + "\n" + "Actors: " + response.data.Actors +
+                            "\n" + "=======================", "utf8", function (err) { })
                     }
                 }
             })

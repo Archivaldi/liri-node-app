@@ -18,7 +18,7 @@ const moment = require("moment");
 
 
 //declare command and item that will be used
-let command = process.argv[2];
+let command = (process.argv[2]).toLowerCase();
 let item = process.argv.slice(3).join(" ");
 var content = fs.readFileSync("./log.txt", "utf8")
 

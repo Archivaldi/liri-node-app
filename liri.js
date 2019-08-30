@@ -190,9 +190,29 @@ function liri() {
         //command do-what-it-says will give user default command and item
     } else if (command === "do-what-it-says") {
 
+        //function for choosing randon live from random.txt file
+
         var contents = fs.readFileSync('./random.txt', 'utf8');
-        command = contents.slice(0, contents.indexOf(","));
-        item = contents.slice(contents.indexOf(",") + 2);
+        var arrayCommas = [];
+        var arraySemicol = [];
+        var arraySigns = [];
+
+        for (var i = 0; i < contents.length; i++) {
+            if (contents[i] === ",")  {
+                arrayCommas.push(i);
+            } else if (contents[i] === "(") {
+                arraySemicol.push(i);
+            } else if (contents[i] === ")") {
+                arraySigns.push(i);
+            }
+        }
+
+
+        var number = Math.floor(Math.random() * arrayCommas.length);
+
+        command = contents.slice(arraySemicol[number] + 1, arrayCommas[number]).toLowerCase();
+        item = contents.slice(arrayCommas[number] + 2, arraySigns[number]).toLowerCase();
+
         liri();
 
         //if user put command that wasn't recognized by liri, user will get this message

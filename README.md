@@ -43,3 +43,6 @@ User will see this data in node console, but also it will also be saved in a log
 * (concert-this, Skrillex)"
 But the user can always add/delete new lines. But the format should be exactly the same. Example: "(spotify-this-song, I Want it That Way)". 
 Not case sensitive.
+
+
+[You can watch video about Liri here](https://youtu.be/HBmwaCpsfsE)

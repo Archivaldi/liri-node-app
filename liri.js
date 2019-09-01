@@ -84,7 +84,9 @@ function liri() {
                     console.log("Sorry, this artist doesn't have upcoming events");
                 } else {
 
-                    fs.appendFile('./log.txt', "\n" + "\n" + command + ", " + item, "utf8", function (err) { });
+                    if (!content.includes(command && item)) {
+                        fs.appendFile('./log.txt', "\n" + "\n" + command + ", " + item, "utf8", function (err) { });
+                    }
 
                     for (var i = 0; i < response.data.length; i++) {
                         console.log("=======================");

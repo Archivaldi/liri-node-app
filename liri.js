@@ -57,7 +57,6 @@ function liri() {
                 if (err) {
                     return console.log('Error occurred: ' + err);
                 }
-                console.log(data.tracks.items);
                 console.log("=======================");
                 console.log("Artist: " + data.tracks.items[3].artists[0].name);
                 console.log("Song name: " + data.tracks.items[3].name);
@@ -194,24 +193,23 @@ function liri() {
 
         var contents = fs.readFileSync('./random.txt', 'utf8');
         var arrayCommas = [];
-        var arraySemicol = [];
-        var arraySigns = [];
+        var arrayOpens = [];
+        var arrayClosing = [];
 
         for (var i = 0; i < contents.length; i++) {
             if (contents[i] === ",")  {
                 arrayCommas.push(i);
             } else if (contents[i] === "(") {
-                arraySemicol.push(i);
+                arrayOpens.push(i);
             } else if (contents[i] === ")") {
-                arraySigns.push(i);
+                arrayClosing.push(i);
             }
         }
 
-
         var number = Math.floor(Math.random() * arrayCommas.length);
 
-        command = contents.slice(arraySemicol[number] + 1, arrayCommas[number]).toLowerCase();
-        item = contents.slice(arrayCommas[number] + 2, arraySigns[number]).toLowerCase();
+        command = contents.slice(arrayOpens[number] + 1, arrayCommas[number]).toLowerCase();
+        item = contents.slice(arrayCommas[number] + 2, arrayClosing[number]).toLowerCase();
 
         liri();
 

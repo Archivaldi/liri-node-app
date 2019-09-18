@@ -57,18 +57,27 @@ function liri() {
                 if (err) {
                     return console.log('Error occurred: ' + err);
                 }
-                console.log("=======================");
-                console.log("Artist: " + data.tracks.items[3].artists[0].name);
-                console.log("Song name: " + data.tracks.items[3].name);
-                console.log("Preview on Spotify: " + data.tracks.items[0].uri);
-                console.log("Album: " + data.tracks.items[3].album.name);
-                console.log("=======================");
+                var sign = "The Sign";
+                for (var i = 0; i < data.tracks.items.length; i++){
+                    if (data.tracks.items[i].name == sign) {
+                        console.log("=======================");
+                        console.log("Artist: " + data.tracks.items[i].artists[0].name);
+                        console.log("Song name: " + data.tracks.items[i].name);
+                        console.log("Preview on Spotify: " + data.tracks.items[0].uri);
+                        console.log("Album: " + data.tracks.items[i].album.name);
+                        console.log("=======================");
+                    };
+                }
 
-                if (!content.includes(data.tracks.items[3].name)) {
+                if (!content.includes(sign)) {
+                    for (var i = 0; i < data.tracks.items.length; i++){
+                        if (data.tracks.items[i].name == sign){
                     fs.appendFile('./log.txt', "\n" + "\n" + command + "\n" + "=======================" + "\n" + "Artist: " +
-                        data.tracks.items[3].artists[0].name + "\n" + "Song name: " + data.tracks.items[3].name +
-                        "\n" + "Preview on Spotify: " + data.tracks.items[3].uri + "\n" + "Album: " + data.tracks.items[3].album.name +
+                        data.tracks.items[i].artists[0].name + "\n" + "Song name: " + data.tracks.items[i].name +
+                        "\n" + "Preview on Spotify: " + data.tracks.items[i].uri + "\n" + "Album: " + data.tracks.items[3].album.name +
                         "\n" + "=======================", "utf8", function (err) { })
+                        }
+                    }
                 }
             });
 

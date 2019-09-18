@@ -74,7 +74,7 @@ function liri() {
                         if (data.tracks.items[i].name == sign){
                     fs.appendFile('./log.txt', "\n" + "\n" + command + "\n" + "=======================" + "\n" + "Artist: " +
                         data.tracks.items[i].artists[0].name + "\n" + "Song name: " + data.tracks.items[i].name +
-                        "\n" + "Preview on Spotify: " + data.tracks.items[i].uri + "\n" + "Album: " + data.tracks.items[3].album.name +
+                        "\n" + "Preview on Spotify: " + data.tracks.items[i].uri + "\n" + "Album: " + data.tracks.items[i].album.name +
                         "\n" + "=======================", "utf8", function (err) { })
                         }
                     }
